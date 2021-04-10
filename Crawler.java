@@ -5,20 +5,20 @@ import java.net.*;
 public class Crawler{
 	public static void main(String[] args) throws IOException {
  
-        //新建一个url对象 通过构造方法传入url值
+        //新建一個url物件 通過構造方法傳入url值
         URL url = new URL("https://tcssh.tc.edu.tw/");
-        //建立Java和url的一个连接，相当于我们访问网址，不同的是Java返回的是connection 我们肉眼返回的是网页内容
+        //建立Java和url的一個連線，相當於我們訪問網址，不同的是Java返回的是connection 我們肉眼返回的是網頁內容
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        //通过相应状态码判断是否访问成功
+        //通過相應狀態碼判斷是否訪問成功
         int code = connection.getResponseCode();
         if (code != 200) {
             return;
         }
-        //获取connection对网页访问之后 的一个输入流，该流中包含了网页的信息内容
+        //獲取connection對網頁訪問之後 的一個輸入流，該流中包含了網頁的資訊內容
         InputStream stream = connection.getInputStream();
-        //通过BufferedReader 获取流中的信息
+        //通過BufferedReader 獲取流中的資訊
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream, "utf-8"));
-        //输出信息
+        //輸出資訊
         String r = null;
 
         FileWriter fw = new FileWriter("C:/Users/user/Desktop/text.txt");
